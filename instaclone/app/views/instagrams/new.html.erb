@@ -1,0 +1,12 @@
+<h1>新規投稿</h1>
+<%= form_with(model: @instagram, local:true) do |f| %>
+  <div class insta_content>
+    <%= f.label:image %>
+    <%= f.file_field:image %>
+  </div>
+  <div class insta_content>
+    <%= f.label:content %>
+    <%= f.text_field:content%>
+  </div>
+  <%= f.submit "投稿する"%>
+<% end %>
