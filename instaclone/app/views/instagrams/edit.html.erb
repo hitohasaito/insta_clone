@@ -1,13 +1,14 @@
-<h1>新規投稿</h1>
+<h1>編集する</h1>
 <%= form_with(model: @instagram, local:true) do |f| %>
   <div class insta_content>
     <%= f.label:image %>
     <%= f.file_field:image %>
+    <%= image_tag @instagram.image.url %>
   </div>
   <div class insta_content>
     <%= f.label:content %>
     <%= f.text_field:content %>
   </div>
-  <%= f.submit "投稿する"%>
+  <%= f.submit "編集する"%>
   <%= link_to "投稿一覧", instagrams_path %>
 <% end %>

@@ -8,6 +8,8 @@
   <tr>
     <td><%= instagram.content %></td>
     <td><%= image_tag instagram.image %></td>
+    <td><%= image_tag instagram.image %></td>
+    <td><%= link_to "編集する" ,edit_instagram_path(instagram.id) %></td>
   </tr>
   <% end %>
 </table>
