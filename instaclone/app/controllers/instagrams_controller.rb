@@ -1,5 +1,5 @@
 class InstagramsController < ApplicationController
-  before_action:set_insta,only:[:edit,:update]
+  before_action:set_insta,only:[:edit,:update,:destroy]
   def new
     @instagram = Instagram.new
   end
@@ -22,6 +22,10 @@ class InstagramsController < ApplicationController
     else
       render "edit"
     end
+  end
+  def destroy
+    @instagram.destroy
+    redirect_to instagrams_path, notice:"投稿を削除しました"
   end
 
 

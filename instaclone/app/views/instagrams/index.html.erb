@@ -8,8 +8,9 @@
   <tr>
     <td><%= instagram.content %></td>
     <td><%= image_tag instagram.image %></td>
-    <td><%= image_tag instagram.image %></td>
     <td><%= link_to "編集する" ,edit_instagram_path(instagram.id) %></td>
+    <td><%= link_to "削除する" ,instagram_path(instagram.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
   <% end %>
 </table>
+  <%= link_to "新規投稿画面へ", new_instagram_path %>

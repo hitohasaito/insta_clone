@@ -2,8 +2,8 @@
 <%= form_with(model: @instagram, local:true) do |f| %>
   <div class insta_content>
     <%= f.label:image %>
-    <%= f.file_field:image %>
     <%= image_tag @instagram.image.url %>
+    <%= f.file_field:image %>
   </div>
   <div class insta_content>
     <%= f.label:content %>
