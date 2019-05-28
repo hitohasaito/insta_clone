@@ -1,4 +1,6 @@
 <h1>登録情報</h1>
 <%= @user.name %>
 <%= @user.email %>
+<%= image_tag @user.profimage.url %>
+
 <p><%= link_to "新規投稿画面へ", new_instagram_path %></p>
