@@ -1,5 +1,4 @@
-<h1>Sign up</h1>
-
+<h1>編集する</h1>
 <%= form_with(model: @user, local: true) do |f| %>
 <% if @user.errors.any? %>
   <div id="error_explanation">
@@ -11,21 +10,19 @@
     </ul>
   </div>
 <% end %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.label :profimage%>
-  <%= f.file_field :profimage%>
+  <div class user_page>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class user_page>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class user_page>
+    <%= f.label :profimage %>
+    <%= image_tag @user.profimage.url %>
+    <%= f.file_field :profimage %>
+  </div>
 
   <%= f.submit %>
 <% end %>
