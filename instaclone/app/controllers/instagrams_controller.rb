@@ -6,6 +6,7 @@ class InstagramsController < ApplicationController
   def create
     @instagram = Instagram.new(insta_params)
     if @instagram.save
+      InstagramMailer.instagram_mail(@instagram).deliver
       redirect_to instagrams_path
     else
       render 'new'
