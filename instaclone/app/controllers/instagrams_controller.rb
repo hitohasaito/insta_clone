@@ -1,10 +1,12 @@
 class InstagramsController < ApplicationController
-  before_action:set_insta,only:[:edit,:update,:destroy]
+  before_action:set_insta,only:[:edit, :update, :destroy, :show]
+
   def new
     @instagram = Instagram.new
   end
   def create
     @instagram = Instagram.new(insta_params)
+    @instagram.user_id = current_user.id
     if @instagram.save
       InstagramMailer.instagram_mail(@instagram).deliver
       redirect_to instagrams_path
@@ -28,7 +30,9 @@ class InstagramsController < ApplicationController
     @instagram.destroy
     redirect_to instagrams_path, notice:"投稿を削除しました"
   end
-
+  def show
+    @favorite = current_user.favorites.find_by(instagram_id: @instagram.id)
+  end
 
 
   private
