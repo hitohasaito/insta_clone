@@ -8,7 +8,7 @@
   <tr>
     <td><%= instagram.content %></td>
     <td><%= image_tag instagram.image %></td>
-    <td><%= link_to "お気に入り" ,instagram_path(instagram.id) %></td>
+    <td><%= link_to "お気に入り登録画面へ" ,instagram_path(instagram.id) %></td>
     <td><%= link_to "編集する" ,edit_instagram_path(instagram.id) %></td>
     <td><%= link_to "削除する" ,instagram_path(instagram.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
