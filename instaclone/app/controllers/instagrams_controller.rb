@@ -20,9 +20,7 @@ class InstagramsController < ApplicationController
   def edit
     if @instagram.user_id != current_user.id
       flash[:notice] = "権限がありません"
-      redirect_to instagrams_path
-    else
-      redirect_to instagram_path method: :PATCH
+      redirect_to instagrams_paths
     end
   end
   def update
@@ -36,9 +34,6 @@ class InstagramsController < ApplicationController
     if @instagram.user_id != current_user.id
       flash[:notice] = "権限がありません"
       redirect_to instagrams_path
-    else
-      @instagram.destroy
-      redirect_to instagrams_path, notice:"投稿を削除しました"
     end
   end
   def show
