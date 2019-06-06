@@ -1,13 +1,15 @@
 <h1>投稿一覧</h1>
 <table>
   <tr>
-    <th>画像<th>
     <th>内容<th>
+    <th>画像<th>
+    <th>投稿者<th>
   </tr>
   <% @instagrams.each do |instagram| %>
   <tr>
     <td><%= instagram.content %></td>
     <td><%= image_tag instagram.image %></td>
+    <td><%= instagram.user.name %></td>
     <td><%= link_to "お気に入り登録画面へ" ,instagram_path(instagram.id) %></td>
     <td><%= link_to "編集する" ,edit_instagram_path(instagram.id) %></td>
     <td><%= link_to "削除する" ,instagram_path(instagram.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>

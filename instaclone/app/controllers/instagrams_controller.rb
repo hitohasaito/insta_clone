@@ -18,6 +18,12 @@ class InstagramsController < ApplicationController
     @instagrams = Instagram.all
   end
   def edit
+    if @instagram.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to instagrams_path
+    else
+      redirect_to instagram_path method: :PATCH
+    end
   end
   def update
     if @instagram.update(insta_params)
@@ -27,8 +33,13 @@ class InstagramsController < ApplicationController
     end
   end
   def destroy
-    @instagram.destroy
-    redirect_to instagrams_path, notice:"投稿を削除しました"
+    if @instagram.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to instagrams_path
+    else
+      @instagram.destroy
+      redirect_to instagrams_path, notice:"投稿を削除しました"
+    end
   end
   def show
     @favorite = current_user.favorites.find_by(instagram_id: @instagram.id)
