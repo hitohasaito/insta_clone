@@ -39,9 +39,13 @@ class InstagramsController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(instagram_id: @instagram.id)
   end
+  def confirm
+    @instagram = Instagram.new(insta_params)
+  end
 
 
   private
+
   def insta_params
     params.require(:instagram).permit(:image, :image_cache, :content)
   end

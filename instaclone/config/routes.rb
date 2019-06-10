@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :instagrams
+  resources :instagrams do
+  collection do
+    post :confirm
+  end
+  end
   resources :users
   resources :sessions
   resources :favorites, only: [:create, :destroy, :index]
