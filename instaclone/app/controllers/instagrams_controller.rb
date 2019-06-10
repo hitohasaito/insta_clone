@@ -2,7 +2,11 @@ class InstagramsController < ApplicationController
   before_action:set_insta,only:[:edit, :update, :destroy, :show]
 
   def new
-    @instagram = Instagram.new
+    if params[:back]
+      @instagram = Instagram.new(insta_params)
+    else
+      @instagram = Instagram.new
+    end
   end
   def create
     @instagram = Instagram.new(insta_params)
@@ -20,7 +24,7 @@ class InstagramsController < ApplicationController
   def edit
     if @instagram.user_id != current_user.id
       flash[:notice] = "権限がありません"
-      redirect_to instagrams_paths
+      redirect_to instagrams_path
     end
   end
   def update
@@ -33,6 +37,9 @@ class InstagramsController < ApplicationController
   def destroy
     if @instagram.user_id != current_user.id
       flash[:notice] = "権限がありません"
+      redirect_to instagrams_path
+    else
+      @instagram.destroy
       redirect_to instagrams_path
     end
   end

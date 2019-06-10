@@ -1,5 +1,5 @@
 <h1>新規投稿</h1>
-<%= form_with(model: @instagram, local:true, url: confirm_instagrams_path ) do |f| %>
+<%= form_with(model: @instagram, local:true, url: choose_new_or_edit ) do |f| %>
   <div class insta_content>
     <%= f.label:image %>
     <%= f.file_field:image %>
