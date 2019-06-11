@@ -1,10 +1,12 @@
 <h1>新規投稿</h1>
 <%= form_with(model: @instagram, local:true, url: choose_new_or_edit ) do |f| %>
-  <div class insta_content>
+  <div class = "insta_content">
     <%= f.label:image %>
+    <%= image_tag(@instagram.image.url) if @instagram.image && @instagram.image.url %>
     <%= f.file_field:image %>
+    <%= f.hidden_field :image_cache %>
   </div>
-  <div class insta_content>
+  <div class = "insta_content">
     <%= f.label:content %>
     <%= f.text_field:content %>
   </div>

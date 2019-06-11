@@ -1,11 +1,11 @@
 <h1>編集する</h1>
 <%= form_with(model: @instagram, local:true) do |f| %>
-  <div class insta_content>
+  <div class="insta_content">
     <%= f.label:image %>
     <%= image_tag @instagram.image.url %>
     <%= f.file_field:image %>
   </div>
-  <div class insta_content>
+  <div class="insta_content">
     <%= f.label:content %>
     <%= f.text_field:content %>
   </div>

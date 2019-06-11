@@ -2,5 +2,6 @@
 <%= @user.name %>
 <%= @user.email %>
 <%= image_tag @user.profimage.url %>
+
 <td><%= link_to "編集する" ,edit_user_path(@user.id) %></td>
 <p><%= link_to "新規投稿画面へ", new_instagram_path %></p>
