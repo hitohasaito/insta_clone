@@ -4,7 +4,8 @@ class FavoritesController < ApplicationController
     redirect_to favorites_path, notice: "#{favorite.instagram.user.name }さんのブログをお気に入り登録しました"
   end
   def index
-    @favorites = Favorite.all
+    @user_fav = current_user.favorites
+    @user_fav.all
   end
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy

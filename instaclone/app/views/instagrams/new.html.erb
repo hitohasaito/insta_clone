@@ -1,5 +1,16 @@
 <h1>新規投稿</h1>
+<h2>ログイン中ユーザー:<%= @instagram.user.name %></h2>
 <%= form_with(model: @instagram, local:true, url: choose_new_or_edit ) do |f| %>
+<% if @instagram.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @instagram.errors.count %>件のエラーがあります。</h2>
+    　　<ul>
+      　　<% @instagram.errors.full_messages.each do |msg| %>
+        　　<li><%= msg %></li>
+      　　<% end %>
+    　　</ul>
+    </div>
+<% end %>
   <div class = "insta_content">
     <%= f.label:image %>
     <%= image_tag(@instagram.image.url) if @instagram.image && @instagram.image.url %>

@@ -1,13 +1,15 @@
 <h1>お気に入り一覧</h1>
 <table>
   <tr>
-    <th>画像<th>
-    <th>内容<th>
+    <th>画像</th>
+    <th>内容</th>
+    <th>投稿者</th>
   </tr>
-  <% @favorites.each do |favorite| %>
+  <% @user_fav.each do |favorite| %>
   <tr>
     <td><%= image_tag favorite.instagram.image.url %></td>
     <td><%= favorite.instagram.content %></td>
+    <td><%= favorite.instagram.user.name %></td>
   </tr>
   <% end %>
 </table>

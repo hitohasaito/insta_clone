@@ -4,6 +4,7 @@
   <%= form.hidden_field @instagram.image.url if @instagram.image && @instagram.image.url %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
+
   <p>画像:<%= image_tag @instagram.image.url %></p>
   <p>内容:<%= @instagram.content %></p>
   <%= form.submit  "登録する" %>

@@ -6,6 +6,7 @@ class InstagramsController < ApplicationController
       @instagram = Instagram.new(insta_params)
     else
       @instagram = Instagram.new
+      @instagram.user_id = current_user.id
     end
   end
   def create
@@ -48,6 +49,8 @@ class InstagramsController < ApplicationController
   end
   def confirm
     @instagram = Instagram.new(insta_params)
+    @instagram.user_id = current_user.id
+    render "new" if @instagram.invalid?
   end
 
 
