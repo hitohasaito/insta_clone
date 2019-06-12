@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      instagram: "インスタグラム"
+      user: "ユーザー"
+      favorite: "お気に入り"
+    attributes:
+      instagram:
+        image: "画像"
+        content: "内容"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        profimage: "プロフィール画像"
+        remember_me: "ログインを記憶"
