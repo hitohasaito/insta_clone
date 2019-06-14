@@ -1,15 +1,14 @@
 <h1>アカウント作成</h1>
-
 <%= form_with(model: @user, local: true) do |f| %>
 <% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "件") %> のエラーがあります</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
+    <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+    　　<ul>
+      　　<% @user.errors.full_messages.each do |msg| %>
+        　　<li><%= msg %></li>
+      　　<% end %>
+    　　</ul>
+    </div>
 <% end %>
 
   <%= f.label :name %>
@@ -24,8 +23,8 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
-  <%= f.label :profimage%>
-  <%= f.file_field :profimage%>
+  <%= f.label :profimage %>
+  <%= f.file_field :profimage %>
 
   <%= f.submit %>
 <% end %>
