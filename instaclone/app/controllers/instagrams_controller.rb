@@ -1,5 +1,6 @@
 class InstagramsController < ApplicationController
   before_action:set_insta,only:[:edit, :update, :destroy, :show]
+  before_action:ensure_user,only:[:edit, :destroy]
 
   def new
     if params[:back]
@@ -23,10 +24,6 @@ class InstagramsController < ApplicationController
     @instagrams = Instagram.all
   end
   def edit
-    if @instagram.user_id != current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to instagrams_path
-    end
   end
   def update
     if @instagram.update(insta_params)
@@ -36,13 +33,8 @@ class InstagramsController < ApplicationController
     end
   end
   def destroy
-    if @instagram.user_id != current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to instagrams_path
-    else
-      @instagram.destroy
-      redirect_to instagrams_path
-    end
+    @instagram.destroy
+    redirect_to instagrams_path
   end
   def show
     @favorite = current_user.favorites.find_by(instagram_id: @instagram.id)
@@ -53,7 +45,6 @@ class InstagramsController < ApplicationController
     render "new" if @instagram.invalid?
   end
 
-
   private
 
   def insta_params
@@ -62,4 +53,11 @@ class InstagramsController < ApplicationController
   def set_insta
     @instagram = Instagram.find(params[:id])
   end
+  def ensure_user
+    @instagram = Instagram.find(params[:id])
+    if @instagram.user_id != current_user.id
+      redirect_to instagrams_path
+    end
+  end
+
 end
