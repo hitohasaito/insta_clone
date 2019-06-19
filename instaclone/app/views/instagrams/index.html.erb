@@ -1,24 +1,22 @@
 <h1>投稿一覧</h1>
-<table>
-  <tr>
-    <th>画像</th>
-    <th>内容</th>
-    <th>投稿者</th>
-  </tr>
   <% @instagrams.each do |instagram| %>
-  <tr>
-    <td><%= instagram.content %></td>
-    <td><%= image_tag instagram.image %></td>
-    <td><%= instagram.user.name %></td>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      投稿者:<%= image_tag instagram.user.profimage, size:"25x25"%><%= instagram.user.name %>
+    </div>
+    <div class="panel-body">
+    <p class="list-group-item-text">画像:<%= image_tag instagram.image %></p>
+    <p class="list-group-item-text">内容:<%= instagram.content %></p>
+  </div>
+  <div class="panel-footer">
     <% if instagram.user_id == current_user.id %>
-    <td><%= link_to "編集する" ,edit_instagram_path(instagram.id) %></td>
-    <td><%= link_to "削除する" ,instagram_path(instagram.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+      <%= link_to "編集する" ,edit_instagram_path(instagram.id) %>
+      <%= link_to "削除する" ,instagram_path(instagram.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
     <% else %>
-    <td><%= link_to "お気に入り登録画面へ" ,instagram_path(instagram.id) %></td>
+      <%= link_to "お気に入り登録画面へ" ,instagram_path(instagram.id) %>
     <% end %>
-  </tr>
+    </div>
   <% end %>
-</table>
-  <%= link_to "新規投稿画面へ", new_instagram_path %>
-  <%= link_to "お気に入り一覧へ", favorites_path %>
+  </div>
+<p><%= link_to "新規投稿画面へ", new_instagram_path %></p>
+<p><%= link_to "お気に入り一覧へ", favorites_path %></p>

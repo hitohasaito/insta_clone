@@ -1,5 +1,4 @@
 <h1>新規投稿</h1>
-<h2>ログイン中ユーザー:<%= @instagram.user.name %></h2>
 <%= form_with(model: @instagram, local:true, url: choose_new_or_edit ) do |f| %>
 <% if @instagram.errors.any? %>
   <div id="error_explanation">

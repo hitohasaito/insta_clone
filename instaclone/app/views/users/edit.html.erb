@@ -10,21 +10,27 @@
     　　</ul>
     </div>
 <% end %>
+<div class = "user_prof">
   <%= f.label :name %>
   <%= f.text_field :name %>
-
+</div>
+<div class = "user_prof">
   <%= f.label :email %>
   <%= f.email_field :email %>
-
+</div>
+<div class = "user_prof">
   <%= f.label :password %>
   <%= f.password_field :password %>
-
+</div>
+<div class = "user_prof">
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-
+</div>
+<div class = "user_prof">
   <%= f.label :profimage %>
   <%= f.file_field :profimage %>
   <%= image_tag @user.profimage.url %>
-
+</div>
   <%= f.submit %>
 <% end %>
+<%= link_to "プロフィール画面へ戻る",user_path %>

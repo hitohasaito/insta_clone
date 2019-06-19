@@ -1,7 +1,9 @@
 <h1>プロフィール</h1>
-<%= @user.name %>
-<%= @user.email %>
-<%= image_tag @user.profimage.url %>
+<ul>
+<li>名前:<%= @user.name %></li>
+<li>メールアドレス:<%= @user.email %></li>
+<li>プロフィール画像:<%= image_tag @user.profimage.url %></li>
+</ul>
 
-<td><%= link_to "編集する" ,edit_user_path(@user.id) %></td>
+<p><%= link_to "編集する" ,edit_user_path(@user.id) %></p>
 <p><%= link_to "新規投稿画面へ", new_instagram_path %></p>

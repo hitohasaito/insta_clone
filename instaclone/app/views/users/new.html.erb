@@ -10,21 +10,24 @@
     　　</ul>
     </div>
 <% end %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.label :profimage %>
-  <%= f.file_field :profimage %>
-
+  <div class = "user_prof">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class = "user_prof">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class = "user_prof">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  <div class = "user_prof">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class = "user_prof">
+    <%= f.label :profimage %>
+    <%= f.file_field :profimage %>
+  </div>
   <%= f.submit %>
 <% end %>
