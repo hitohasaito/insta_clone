@@ -7,8 +7,8 @@ class InstagramsController < ApplicationController
       @instagram = Instagram.new(insta_params)
     else
       @instagram = Instagram.new
-      @instagram.user_id = current_user.id
     end
+      @instagram.user_id = current_user.id
   end
   def create
     @instagram = Instagram.new(insta_params)
