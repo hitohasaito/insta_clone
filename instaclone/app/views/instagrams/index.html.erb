@@ -1,10 +1,10 @@
 <h1>投稿一覧</h1>
+<div class="panel panel-default">
   <% @instagrams.each do |instagram| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+    <h4 class="panel">
       投稿者:<%= image_tag instagram.user.profimage, size:"25x25"%><%= instagram.user.name %>
-    </div>
-    <div class="panel-body">
+    </h4>
+  <div class="panel-body">
     <p class="list-group-item-text">画像:<%= image_tag instagram.image %></p>
     <p class="list-group-item-text">内容:<%= instagram.content %></p>
   </div>
@@ -15,8 +15,8 @@
     <% else %>
       <%= link_to "お気に入り登録画面へ" ,instagram_path(instagram.id) %>
     <% end %>
-    </div>
+   </div>
   <% end %>
-  </div>
-<p><%= link_to "新規投稿画面へ", new_instagram_path %></p>
-<p><%= link_to "お気に入り一覧へ", favorites_path %></p>
+</div>
+  <p><%= link_to "新規投稿画面へ", new_instagram_path %></p>
+  <p><%= link_to "お気に入り一覧へ", favorites_path %></p>
