@@ -4,11 +4,13 @@ class InstagramsController < ApplicationController
 
   def new
     if params[:back]
-      @instagram = Instagram.new(insta_params)
+      #@instagram = Instagram.new(insta_params)
+      @instagram = current_user.instagrams.new(insta_params)
     else
-      @instagram = Instagram.new
+      #@instagram = Instagram.new
+      @instagram = current_user.instagrams.new
     end
-      @instagram.user_id = current_user.id
+      #@instagram.user_id = current_user.id
   end
   def create
     @instagram = Instagram.new(insta_params)

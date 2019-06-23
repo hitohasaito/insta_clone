@@ -1,9 +1,11 @@
 <h1>お気に入り一覧</h1>
+<div class="panel panel-default">
   <% @user_fav.each do |favorite| %>
-<p class="panel panel-default">
+<div class="panel panel-header">
     <p>投稿者<%= favorite.instagram.user.name %></p>
+</div>
     <p>画像:<%= image_tag favorite.instagram.image.url %></p>
     <p>内容<%= favorite.instagram.content %></p>
   <% end %>
-</p>
+</div>
 <%= link_to "投稿一覧へ戻る",instagrams_path %>
