@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <% @user_fav.each do |favorite| %>
   <div class="panel panel-header">
-    <p>投稿者<%= favorite.instagram.user.name %></p>
+    <h4>投稿者<%= image_tag favorite.user.profimage,size:"25x25"%><%= favorite.instagram.user.name %></h4>
   </div>
     <p>画像:<%= image_tag favorite.instagram.image.url %></p>
     <p>内容<%= favorite.instagram.content %></p>
