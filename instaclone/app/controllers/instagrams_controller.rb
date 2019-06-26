@@ -1,16 +1,14 @@
 class InstagramsController < ApplicationController
   before_action:set_insta,only:[:edit, :update, :destroy, :show]
-  before_action:ensure_user,only:[:edit, :destroy]
+  before_action:authenticate_user,only:[:index,:show,:edit,:update]
+  before_action:match_user,only:[:edit, :destroy]
 
   def new
     if params[:back]
-      #@instagram = Instagram.new(insta_params)
       @instagram = current_user.instagrams.new(insta_params)
     else
-      #@instagram = Instagram.new
       @instagram = current_user.instagrams.new
     end
-      #@instagram.user_id = current_user.id
   end
   def create
     @instagram = Instagram.new(insta_params)
@@ -55,11 +53,11 @@ class InstagramsController < ApplicationController
   def set_insta
     @instagram = Instagram.find(params[:id])
   end
-  def ensure_user
+  def match_user
     @instagram = Instagram.find(params[:id])
     if @instagram.user_id != current_user.id
       redirect_to instagrams_path
+      flash[:notice] = "権限がありません"
     end
   end
-
 end
